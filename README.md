@@ -1,14 +1,14 @@
 # vault-jira-kubernetes-gcp
 Kubernetes Vault deployment, GCP PostgreSql Dynamic Vault secrets, JIRA dbconfig.xml vault secured.
 
-Credit to [Kelsey Hightower][kelsey] and [Seth Vargo][seth] for putting out these amazing guides. I took a lot of inspiration from these two repos for the vault integration piece.
-[kelsey]:https://github.com/kelseyhightower/vault-on-google-kubernetes-engine
-[seth]:https://github.com/sethvargo/vault-kubernetes-workshop
+Credit to [Kelsey Hightower](https://github.com/kelseyhightower/vault-on-google-kubernetes-engine) and [Seth Vargo](https://github.com/sethvargo/vault-kubernetes-workshop) for putting out these amazing guides. I took a lot of inspiration from these two repos for the vault integration piece.
+
 
 ## JIRA dbconfig.xml Usecase
+
 dbconfig.xml is holding a plain text username and password for the DB connection.
 
-To tackle this problem: we will use a Kubernetes Vault deployment, specifically [Vault Dynamic Secrets][https://learn.hashicorp.com/vault/getting-started/dynamic-secrets].
+To tackle this problem: we will use a Kubernetes Vault deployment, specifically [Vault Dynamic Secrets](https://learn.hashicorp.com/vault/getting-started/dynamic-secrets).
 One caveat, XML does not take environment variables,  JIRA needs a cron job to reboot and rewrite the secret to dbconfigxml.
 No one said security is easy or convenient. For production I would set the cron job to once a week or month when patching. You would need to change the cronjob and TTL and MAX_TTL in the Vault policy.
 
@@ -55,7 +55,7 @@ No one said security is easy or convenient. For production I would set the cron 
 - You create a single node cluster, in production you would create 3. This would be changed in setup_vault.sh
   Also in the vault.yaml you would increase the replica to 3.
 
-### Tutorial
+# Tutorial
 
 ## Create a New Project
 
@@ -130,12 +130,12 @@ setup-vaul.sh will create:
 - Apply vault.yaml
 - Create and apply vault-load-balancer.yaml
 
-#VPC-Native - using alias IP
+##VPC-Native - using alias IP
 This is needed for private IP communication with CloudSQL
 
 
 
-## Set Vault Environemnt and Check Status
+## Set Vault Environment and Check Status
 
 To set the environment variables for Vault, run vault.env
 ```
@@ -164,6 +164,7 @@ HA Mode         active
 
 First create the PostgreSql DB instance, this can take some time.
 Then create DB and User.
+
 ```
 cd postgresql
 sh create-instance.sh
@@ -172,7 +173,7 @@ sh create-db-user.sh
 
 Change the password in create-db-user.sh - Randomly generated of course.
 
-Next you will need to login to the GCP console, since there is no way to script this. :(
+Next you will need to login to the GCP console, since there is no way to script this. :
 https://console.cloud.google.com
 
 Go to SQL
@@ -182,7 +183,7 @@ Hit the checkbox Private IP
 Allocate and connect
 Remove Public IP
 
-[For more information on SQL connections][https://cloud.google.com/blog/products/databases/introducing-private-networking-connection-for-cloud-sql]
+[For more information on SQL connections](https://cloud.google.com/blog/products/databases/introducing-private-networking-connection-for-cloud-sql)
 
 Also Cloud SQL Admin API needs to be enabled.
 
