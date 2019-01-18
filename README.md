@@ -76,26 +76,28 @@ Once the Project is created, click on Compute Engine and Kubernetes engine to en
 
 ## Connect to GCP Project
 
+In your shell run:
+```
 gcloud init
-
+```
 If you are a new user you will need to create a new configuration, otherwise select 1.
-
+```
 Pick configuration to use:
  [1] Re-initialize this configuration [default] with new settings
  [2] Create a new configuration
-
+```
  Select your account or login with new one.
-
+```
  Choose the account you would like to use to perform operations for
  this configuration:
   [1] example@example.com
   [2] Log in with a new account
-
+```
 You might have a longer list but select the project you created.
-
+```
 Pick cloud project to use:
   [1] vault-jira-kubernetes-gcp
-
+```
 You are all set.
 
 ## Create Kubernetes Cluster and Vault
