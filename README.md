@@ -135,7 +135,7 @@ setup-vaul.sh will create:
 - Apply vault.yaml
 - Create and apply vault-load-balancer.yaml
 ```
-##VPC-Native - using alias IP
+## VPC-Native - using alias IP
 This is needed for private IP communication with CloudSQL
 
 
