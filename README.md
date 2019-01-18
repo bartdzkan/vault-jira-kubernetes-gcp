@@ -115,7 +115,7 @@ sh setup-vault.sh
 
 This will take around 5 minutes to deploy.
 
-setup-vaul.sh will create:
+setup-vault.sh will create:
 ```
 - GCP Services
 - Vault KMS keyring
@@ -291,7 +291,7 @@ postgresql
 SQL_PRIVATE_IP
 jira-db
 
-Use the crendentials jira-db-user initially.
+Use the credentials jira-db-user initially.
 
 Please wait while the setup completes.
 
