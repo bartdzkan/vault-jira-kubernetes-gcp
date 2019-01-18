@@ -116,6 +116,7 @@ sh setup-vault.sh
 This will take around 5 minutes to deploy.
 
 setup-vaul.sh will create:
+
 - GCP Services
 - Vault KMS keyring
 - Vault-init encryption key
@@ -148,7 +149,7 @@ vault status
 ```
 
 Vault should display your unsealed vault
-
+```
 Key             Value
 ---             -----
 Seal Type       shamir
@@ -162,7 +163,7 @@ Cluster ID      69238f95-2f45-253e-5355-0000000
 HA Enabled      true
 HA Cluster      https://10.0.0.0:8201
 HA Mode         active
-
+```
 ##Create GCP PostgreSql DB for JIRA
 
 First create the PostgreSql DB instance, this can take some time.
