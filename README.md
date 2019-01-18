@@ -16,17 +16,19 @@ No one said security is easy or convenient. For production I would set the cron 
 
 - You must have a Google Cloud Platform account and be authenticated as a
   project owner. If you are running locally, you will need to download and
-  install the [Google Cloud SDK][sdk], and then authenticate to Google Cloud
+  install the [Google Cloud SDK](https://cloud.google.com/sdk/), and then authenticate to Google Cloud
   appropriately.
+
 - You must install kubectl to work with kubernetes
   ```text
   gcloud components install kubectl
   ```
+
 - This tutorial generates self-signed SSL certificates and does not encrypt the
   resulting keys. For more details on a production-hardened setup, please see
-  the [Vault production hardening docs][vault-prod-hardening].
+  the [Vault production hardening docs](https://www.vaultproject.io/guides/operations/production).
 
-- To install Vault client, find the [appropriate package][https://www.vaultproject.io/downloads.html] for your system and download it.
+- To install Vault client, find the [appropriate package](https://www.vaultproject.io/downloads.html) for    your system and download it.
   Vault is packaged as a zip archive.
   After downloading Vault, unzip the package. Vault runs as a single binary named vault. Any other files in the package can be safely removed and Vault will still function.
 
@@ -34,17 +36,17 @@ No one said security is easy or convenient. For production I would set the cron 
   ```text
   OSX: brew install vault
   ```
-- You will need to install [jq][https://stedolan.github.io/jq/download/]
+- You will need to install [jq](https://stedolan.github.io/jq/download/)
   ```text
   OSX: brew install jq
   ```
-- You will need to install [cfssl][https://pkg.cfssl.org/]
+- You will need to install [cfssl](https://pkg.cfssl.org/)
   ```text
   OSX: brew install cfssl
   ```
 
 - I've had issues in the past with other deployments. These scripts where ran with bash --version 4.4.23
-  Instructions to [upgrade][https://clubmate.fi/upgrade-to-bash-4-in-mac-os-x/] bash  
+  Instructions to [upgrade](https://clubmate.fi/upgrade-to-bash-4-in-mac-os-x/) bash  
 
 - You must clone this repo:
 
@@ -62,7 +64,7 @@ No one said security is easy or convenient. For production I would set the cron 
 To create a new project:
 
 Go to the Manage resources page in the GCP Console.
-GO TO [THE MANAGE RESOURCES PAGE][https://console.cloud.google.com/cloud-resource-manager]
+GO TO [THE MANAGE RESOURCES PAGE](https://console.cloud.google.com/cloud-resource-manager)
 On the Select organization drop-down list at the top of the page, select the organization in which you want to create a project. If you are a free trial user, skip this step, as this list does not appear.
 Click Create Project.
 In the New Project window that appears, enter a project name and select a billing account as applicable.
@@ -82,7 +84,7 @@ Pick configuration to use:
  [1] Re-initialize this configuration [default] with new settings
  [2] Create a new configuration
 
- Select your accout or login with new one.
+ Select your account or login with new one.
 
  Choose the account you would like to use to perform operations for
  this configuration:
@@ -134,7 +136,6 @@ setup-vaul.sh will create:
 This is needed for private IP communication with CloudSQL
 
 
-
 ## Set Vault Environment and Check Status
 
 To set the environment variables for Vault, run vault.env
@@ -157,7 +158,7 @@ Version         0.11.4
 Cluster Name    vault-cluster-000000
 Cluster ID      69238f95-2f45-253e-5355-0000000
 HA Enabled      true
-HA Cluster      https://10.0.0.12:8201
+HA Cluster      https://10.0.0.0:8201
 HA Mode         active
 
 ##Create GCP PostgreSql DB for JIRA
@@ -327,7 +328,7 @@ sudo cat dbconfig.xml
 ```
 To see the new config file.
 
-###Set up cron job
+##Set up cron job
 
 This cronjob needs to run as root, and will run everyday at 12:00am
 ```
@@ -343,14 +344,12 @@ sudo chmod 750 var/atlassian/application/jira
 You are done!
 Remove all the .json and .csr files
 
-###Troubleshooting
+#Troubleshooting
 
 ##Check cronjob or edit
 ```
 sudo crontab -l -u root
 ```
-
-
 
 ##Starting Stopping JIRA service
 ```
@@ -358,10 +357,10 @@ sudo /etc/init.d/jira start/stop
 ```
 
 ##Get logs from cloud proxy
-
 ```
 kubectl get pods --namespace=default
 ```
+
 Copy your pod name and run command to get logs
 
 ```
