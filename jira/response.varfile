@@ -1,0 +1,9 @@
+#install4j response file for JIRA Software 7.13.0
+#Tue Jan 08 15:36:53 UTC 2019
+executeLauncherAction$Boolean=true
+app.install.service$Boolean=true
+sys.confirmedUpdateInstallationString=false
+launch.application$Boolean=true
+existingInstallationDir=/usr/local/JIRA Software
+sys.languageId=en
+sys.installationDir=/opt/atlassian/jira
