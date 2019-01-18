@@ -135,7 +135,7 @@ setup-vaul.sh will create:
 - Apply vault.yaml
 - Create and apply vault-load-balancer.yaml
 ```
-## VPC-Native - using alias IP
+### VPC-Native - using alias IP
 This is needed for private IP communication with CloudSQL
 
 
@@ -164,7 +164,7 @@ HA Enabled      true
 HA Cluster      https://10.0.0.0:8201
 HA Mode         active
 ```
-##Create GCP PostgreSql DB for JIRA
+## Create GCP PostgreSql DB for JIRA
 
 First create the PostgreSql DB instance, this can take some time.
 Then create DB and User.
@@ -194,7 +194,7 @@ Also Cloud SQL Admin API needs to be enabled.
 Once this has finished copy the Private Ip.
 
 
-##CloudSQL Proxy and Helm
+## CloudSQL Proxy and Helm
 Initialize Helm
 ```
 cd tiller
@@ -231,7 +231,7 @@ on the following DNS name from within your cluster:
 - sidecar-proxy-gcloud-sqlproxy.default
 
 
-##Vault Configuration
+## Vault Configuration
 
 It is best practice not to use the root token.
 
@@ -263,7 +263,7 @@ This will create your first user and secret in your CloudSQL instance.
 The file database-creds.json has the username and password (Secret) for JIRA.
 This is just a test, to see if everything is working.
 
-##Jira Deployment
+## Jira Deployment
 
 SSH into your jira server
 ```
@@ -331,7 +331,7 @@ sudo cat dbconfig.xml
 ```
 To see the new config file.
 
-##Set up cron job
+## Set up cron job
 
 This cronjob needs to run as root, and will run everyday at 12:00am
 ```
@@ -347,19 +347,19 @@ sudo chmod 750 var/atlassian/application/jira
 You are done!
 Remove all the .json and .csr files
 
-#Troubleshooting
+# Troubleshooting
 
-##Check cronjob or edit
+## Check cronjob or edit
 ```
 sudo crontab -l -u root
 ```
 
-##Starting Stopping JIRA service
+## Starting Stopping JIRA service
 ```
 sudo /etc/init.d/jira start/stop
 ```
 
-##Get logs from cloud proxy
+## Get logs from cloud proxy
 ```
 kubectl get pods --namespace=default
 ```
@@ -370,7 +370,7 @@ Copy your pod name and run command to get logs
 kubectl logs sidecar-proxy-gcloud-sqlproxy-85d85c8898-f4mt8
 ```
 
-##Vault errors
+## Vault errors
 
 When vault gives you a connection error, it is because you are not in the
 /vault folder. Vault needs your ca.pem certificate to authenticate.
