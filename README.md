@@ -116,7 +116,7 @@ sh setup-vault.sh
 This will take around 5 minutes to deploy.
 
 setup-vaul.sh will create:
-
+```
 - GCP Services
 - Vault KMS keyring
 - Vault-init encryption key
@@ -134,7 +134,7 @@ setup-vaul.sh will create:
 - Create Vault configmap
 - Apply vault.yaml
 - Create and apply vault-load-balancer.yaml
-
+```
 ##VPC-Native - using alias IP
 This is needed for private IP communication with CloudSQL
 
